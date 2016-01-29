@@ -6,7 +6,7 @@ cd /etc
 echo "Downloading the hosts.txt from http://winhelp2002.mvps.org/hosts.txt"
 wget http://winhelp2002.mvps.org/hosts.txt
 #Backup the old hosts file
-echo "Making a backup of the old /etc/hosts
+echo "Making a backup of the old /etc/hosts"
 cp /etc/hosts /etc/hosts.old; echo "Backup complete"
 #Add the contents of the downloaded hosts.txt file to /etc/hosts
 echo "Appending the content of the newly downloaded hosts.txt to the old /etc/hosts file"
