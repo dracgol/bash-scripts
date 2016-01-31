@@ -3,6 +3,8 @@
 #run this script with administrative privilege
 #Get the hosts.txt file
 cd /etc
+if [ $PWD!=/etc ]
+then echo "Make sure you have administrative rights"
 echo "Downloading the hosts.txt from http://winhelp2002.mvps.org/hosts.txt"
 wget http://winhelp2002.mvps.org/hosts.txt
 if  [ -e /etc/hosts.txt ]
