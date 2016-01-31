@@ -1,2 +1,2 @@
-# bash-scripts
-just some scripts that i use often
+# shell-scripts
+# just some scripts that i use often (bash mostly)
