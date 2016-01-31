@@ -4,7 +4,7 @@
 # Get the hosts.txt file
 cd /etc
 # Making sure the PWD is /etc
-if [ $PWD!=/etc ]
+if [ $PWD != /etc ]
   then echo "Make sure you have administrative rights"
     exit
   else
@@ -24,7 +24,7 @@ if [ $PWD!=/etc ]
             mv $PWD/hosts.txt $new_hosts
               if [ -e $new_hosts]
               then echo "Backup Complete"
-              wait 1
+              sleep 1
               else echo "Backup Failed! Exiting"
               exit
               fi
@@ -43,11 +43,11 @@ if [ $PWD!=/etc ]
           echo "File downloaded succesfully"
           #Backup the old hosts file
           echo "Making a backup of the old $PWD/hosts"
-          wait 3
+          sleep 3
           cp $PWD/hosts $PWD/hosts.old; 
             if [ -e $PWD/hosts.old ]
             then echo "Backup complete"
-            wait 1
+            sleep 1
             else echo "Backup Failed! Removing downloaded file."
             rm $PWD/hosts.txt
             echo "Exiting now."
@@ -55,8 +55,8 @@ if [ $PWD!=/etc ]
             fi
           #Add the contents of the downloaded hosts.txt file to /etc/hosts
           echo "Appending the content of the newly downloaded hosts.txt to the $PWD/hosts file"
-          wait 1
-          cat /etc/hosts.txt >> /etc/hosts; echo "Done!"; wait 2
+          sleep 1
+          cat /etc/hosts.txt >> /etc/hosts; echo "Done!"; sleep 2
           echo "All done! Exiting now."
         else
           echo "Make sure you have administrative rights"
