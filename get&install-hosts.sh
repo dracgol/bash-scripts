@@ -45,7 +45,7 @@ if [ $PWD != /etc ]
           echo "Making a backup of the old $PWD/hosts"
           sleep 3
 	  old_hosts=hosts.OLD_$(date +%y%m%d)
-	  mv /etc/hosts /etc/$old_hosts 
+	  cp /etc/hosts /etc/$old_hosts 
             if [ -e $PWD/$old_hosts ]
             then echo "Backup complete"
             sleep 1
