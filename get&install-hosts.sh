@@ -3,6 +3,7 @@
 # Run this script with administrative privilege
 # Get the hosts.txt file
 cd /etc
+echo "Changing directory to /etc"
 # Making sure the PWD is /etc
 if [ $PWD != /etc ]
   then echo "Make sure you have administrative rights"
@@ -11,29 +12,28 @@ if [ $PWD != /etc ]
     echo "Checking if file hosts.txt already exists"
     if [ -e $PWD/hosts.txt ]
     then echo "File hosts.txt already exists. Please rename it, move it or delete it."
-      read -p "Would you like to automaticaly rename it under hosts.txt-bkp-$date name? Y/N 
-      > " aut_ren # puts the answer on a new line
+      read -p "Would you like to automaticaly rename it under hosts.txt-bkp-$(date +%y%m%d) name? Y/N 
+      > " auto_ren # puts the answer on a new line
         case $auto_ren in
           n|N|[nN][oO])
             echo "Exiting"
             exit
             ;;
-          [yY]|[Yy][eE][sS])
+          y|Y|[yY][eE][sS])
             echo "Renaming file"
-            new_hosts=$PWD/hosts.txt-bkp-$date
+            new_hosts=$PWD/hosts.txt-bkp-$(date +%y%m%d)
             mv $PWD/hosts.txt $new_hosts
-              if [ -e $new_hosts]
+              if [ -e $new_hosts ]
               then echo "Backup Complete"
-              sleep 1
-              else echo "Backup Failed! Exiting"
-              exit
+              else echo "Backup Failed! Exiting"; exit
+              sleep 3
               fi
             ;;  
           *)
             echo "Exiting"; exit
             ;;
         esac
-    else
+    fi
       echo "Starting download..."
       sleep 3
       echo "Downloading the hosts.txt from http://winhelp2002.mvps.org/hosts.txt"
@@ -44,8 +44,9 @@ if [ $PWD != /etc ]
           #Backup the old hosts file
           echo "Making a backup of the old $PWD/hosts"
           sleep 3
-          cp $PWD/hosts $PWD/hosts.old; 
-            if [ -e $PWD/hosts.old ]
+	  old_hosts=hosts.OLD_$(date +%y%m%d)
+	  mv /etc/hosts /etc/$old_hosts 
+            if [ -e $PWD/$old_hosts ]
             then echo "Backup complete"
             sleep 1
             else echo "Backup Failed! Removing downloaded file."
@@ -61,5 +62,4 @@ if [ $PWD != /etc ]
         else
           echo "Make sure you have administrative rights"
         fi
-    fi
 fi
