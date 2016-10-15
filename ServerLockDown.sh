@@ -11,6 +11,10 @@ echo "Adding new rules"
 # Example rules
 # Allow SSH connections on tcp port 22
  iptables -A INPUT -p tcp --dport 22 -j ACCEPT -m comment --comment "SSH"
+ 
+ #Allow traffic on 80 and 443 ports
+ iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+ iptables -A INPUT -p tcp --dport 443 -j ACCEPT
 
 # Set default policies for INPUT, FORWARD and OUTPUT chains
 #
