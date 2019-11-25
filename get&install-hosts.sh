@@ -60,7 +60,8 @@ if [ $PWD != /etc ]
         	#Add the contents of the downloaded hosts.txt file to /etc/hosts
         	echo "Appending the content of the newly downloaded hosts.txt to the $PWD/hosts file"
         	sleep 1
-        	cat /etc/hosts.txt >> /etc/hosts; echo "Done!"; sleep 2
+        	cat /etc/hosts.txt >> /etc/hosts
+		cat /etc/hosts | tr -d '\r' > /etc/hosts; echo "Done!"; sleep 2
         	echo "All done! Exiting now."; exit
       	else
         echo "Make sure you have administrative rights"; exit
