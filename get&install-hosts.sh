@@ -41,7 +41,7 @@ if [ $PWD != /etc ]
     fi
     echo "Starting download..."
     sleep 3
-    echo "Downloading the hosts.txt from http://winhelp2002.mvps.org/hosts.txt"
+    echo "Downloading the hosts.txt from https://winhelp2002.mvps.org/hosts.txt"
     wget http://winhelp2002.mvps.org/hosts.txt
       if  [ -e $PWD/hosts.txt ]
       	then 
